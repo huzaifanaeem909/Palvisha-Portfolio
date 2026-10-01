@@ -1,14 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, JetBrains_Mono, Manrope } from "next/font/google";
+import { Bricolage_Grotesque, JetBrains_Mono, Manrope, Unbounded } from "next/font/google";
 import { JsonLd } from "@/components/layout/json-ld";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+/* Previous heading font. Uncomment this and the --font-heading line in globals.css to restore it. */
+// const cormorant = Cormorant_Garamond({
+//   variable: "--font-cormorant",
+//   subsets: ["latin"],
+//   weight: ["400", "500", "600", "700"],
+//   display: "swap",
+// });
+
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -85,7 +98,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
+      className={`${unbounded.variable} ${bricolage.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen font-body antialiased">
         <ThemeProvider>
