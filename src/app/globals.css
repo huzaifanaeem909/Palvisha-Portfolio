@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Light mode — warm off-white */
+  --background: 40 33% 97%;
+  --foreground: 0 0% 10%;
+  --card: 40 30% 99%;
+  --card-foreground: 0 0% 10%;
+  --popover: 40 30% 99%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 0 0% 10%;
+  --primary-foreground: 40 33% 97%;
+  --secondary: 38 20% 92%;
+  --secondary-foreground: 0 0% 15%;
+  --muted: 38 15% 93%;
+  --muted-foreground: 30 5% 42%;
+  --accent: 42 46% 53%;
+  --accent-foreground: 0 0% 100%;
+  --gold: 42 46% 53%;
+  --gold-foreground: 0 0% 100%;
+  --gold-soft: 43 38% 88%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 38 15% 88%;
+  --input: 38 15% 86%;
+  --ring: 42 46% 53%;
+  --radius: 0.75rem;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+}
+
+.dark {
+  /* Dark mode — charcoal */
+  --background: 210 11% 9%;
+  --foreground: 40 25% 95%;
+  --card: 210 10% 13%;
+  --card-foreground: 40 25% 95%;
+  --popover: 210 10% 13%;
+  --popover-foreground: 40 25% 95%;
+  --primary: 40 25% 95%;
+  --primary-foreground: 210 11% 9%;
+  --secondary: 210 8% 18%;
+  --secondary-foreground: 40 25% 95%;
+  --muted: 210 8% 16%;
+  --muted-foreground: 40 8% 65%;
+  --accent: 42 46% 53%;
+  --accent-foreground: 0 0% 100%;
+  --gold: 42 46% 58%;
+  --gold-foreground: 0 0% 100%;
+  --gold-soft: 42 30% 25%;
+  --destructive: 0 62% 40%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 210 8% 20%;
+  --input: 210 8% 22%;
+  --ring: 42 46% 58%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-gold: hsl(var(--gold));
+  --color-gold-foreground: hsl(var(--gold-foreground));
+  --color-gold-soft: hsl(var(--gold-soft));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-heading: var(--font-cormorant), serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  section {
+    scroll-margin-top: 5rem;
+  }
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-transform focus:translate-y-0;
+  }
+  .section-padding {
+    @apply px-5 sm:px-8 lg:px-12 xl:px-20;
+  }
+  .container-narrow {
+    @apply mx-auto max-w-6xl;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .heading-xl {
+    font-family: var(--font-cormorant), serif;
+    font-size: clamp(2.75rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .heading-lg {
+    font-family: var(--font-cormorant), serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .heading-md {
+    font-family: var(--font-cormorant), serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground;
+  }
+  .gold-glow {
+    box-shadow:
+      0 0 0 1px hsl(var(--gold) / 0.2),
+      0 8px 30px -8px hsl(var(--gold) / 0.15);
+  }
+  .gold-glow-hover {
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.4s ease,
+      border-color 0.4s ease;
+  }
+  .gold-glow-hover:hover {
+    box-shadow:
+      0 0 0 1px hsl(var(--gold) / 0.4),
+      0 12px 40px -8px hsl(var(--gold) / 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
