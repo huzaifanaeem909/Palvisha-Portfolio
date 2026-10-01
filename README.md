@@ -1,30 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Palvisha Agha — Portfolio
 
-## Getting Started
+One-page portfolio for [Palvisha Agha](https://palvisha-agha.vercel.app), a professional content writer. The site covers services, selected work, experience, an FAQ, and a contact form.
 
-First, run the development server:
+## Stack
+
+- [Next.js](https://nextjs.org) 16 (App Router) and React 19
+- TypeScript
+- Tailwind CSS 4
+- [Motion](https://motion.dev) for section animation
+- [next-themes](https://github.com/pacocoursey/next-themes) for light and dark mode
+- [Resend](https://resend.com) and [Zod](https://zod.dev) for the contact form
+
+## Getting started
+
+Requires [pnpm](https://pnpm.io) 10.
 
 ```bash
+pnpm install
+cp .env.example .env.local
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
+The site renders without email credentials. The contact form returns an error until the Resend variables below are set.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment
 
-## Learn More
+Copy `.env.example` to `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Resend API key used to send contact messages |
+| `RESEND_FROM_EMAIL` | Verified sender address |
+| `CONTACT_TO_EMAIL` | Inbox that receives enquiries |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL for metadata, sitemap, and Open Graph |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | What it does |
+| --- | --- |
+| `pnpm dev` | Start the development server |
+| `pnpm build` | Production build |
+| `pnpm start` | Serve the production build |
+| `pnpm lint` | Run ESLint |
+| `pnpm typecheck` | Run the TypeScript compiler |
+| `pnpm test` | Run contact-form tests |
 
-## Deploy on Vercel
+## Editing content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Site identity, SEO, navigation, and social links live in `src/data/site.ts`. Services, projects, experience, process steps, and FAQ answers live in `src/data/content.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Page sections are composed in `src/app/page.tsx`.
